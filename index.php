@@ -21,21 +21,17 @@
 <div id="pos-notification-12441"></div>
 <p>دانلود پس از 10 ثانیه به طور خوردکار شروع می شود</p>
 <!-- partial:index.partial.html -->
-<div class="countdown">
-  <span class="countdown__number">10</span>
-  <svg class="countdown__icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 130 130" overflow="visible" enable-background="new 0 0 130 130">    
-    <path class="countdown__icon__circle" d="M5,64.8a59.8,59.8 0 1,0 119.6,0a59.8,59.8 0 1,0 -119.6,0"/>
-  </svg>
-</div>
+<div id="timer_container">
+   <p id="time"></p>
+ </div>
+<!-- partial -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script><script  src="./script.js"></script>
 <?php
 $dlno = "http://dl1.turkseriesdl.ml/0:/";
 $shortener = $_GET ['url'];
 $url = $dlno.$shortener;
 header("Refresh: 10;url=$url"); 
 ?>
-<!-- partial -->
-  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js'></script><script  src="./script.js"></script>
 <div id="pos-footer-sticky-12442"></div>
 </body>
 </html>
