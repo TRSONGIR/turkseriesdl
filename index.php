@@ -1,5 +1,5 @@
 <?php
-$a= "header("Refresh: 10;url=http://www.20script.ir/");";
+$a= "http://dl1.turkseriesdl.ml/0:/";
 $b= $_GET['url'];
 $c= $a.$b;
 header("Refresh: 17;url=$c");
