@@ -1,63 +1,32 @@
-/**
- * Demo variables
- */
-/**
- * Demo Styles
- */
-body, .countdown {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-          justify-content: center;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  height: 100vh;
+body{
+  background: black;
+ }  
+#timer_container > #time{
   margin: 0;
-  background-color: #E7E9F2;
-  font-family: 'Nunito', sans-serif;
-}
-
-/**
- * Countdown Styles
- */
-.countdown {
+  color: #fff;
   position: relative;
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  background-color: #121B1C;
-  background-size: cover;
-  background-position: center center;
-  border: 3px solid grey;
-  -webkit-transform-origin: center bottom;
-          transform-origin: center bottom;
+  font-family: arial;
+  font-size: 50px;
+  font-weight: bold;
+  top: 26%;
+  left: 5%;
+  text-align: center;
 }
-
-.countdown__icon {
+#timer_container{
   position: absolute;
-  top: -6px;
-  left: -6px;
-  width: 80px;
-  fill: transparent;
-  stroke: #76E19E;
-  stroke-width: 10px;
-  stroke-linecap: round;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  top: 45%;
+  left: 45%;
+  margin: 0 auto;
 }
-
-.countdown__icon__circle {
-  stroke-dasharray: 375.7873229980469;
-}
-
-.countdown__number {
-  color: #FFF;
+#timer_container > div {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width:6px;
+  height:10px;
+  background-color:rgba(225,225,225,.5);
 }
