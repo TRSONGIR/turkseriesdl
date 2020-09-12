@@ -1,39 +1,31 @@
-var $circleBorder = $('.countdown__icon__circle').get(0);
-var $countdown = $('.countdown');
+var timeleft, time;
+timeleft = time = 30;
+$("#time").html(timeleft);
+$("#timer_container").fadeTo("slow",1);
+$("#time").fadeTo("slow",1);
+var i, j, rotation, width;  
 
-var length = $circleBorder.getTotalLength();
-var counter = {
-  var: 10
-};
-
-var tl = new TimelineMax({
-  delay: 0.75,
-  repeatDelay: 1,
-  repeat: -1,
-});
-
-tl.play();
-
-tl.set($countdown, {
-    scale: 0,
-  }).to($countdown, 0.4, {
-    scale: 1,
-    ease: Back.easeOut.config(1.4),
-  }).to($circleBorder, 10, {
-    strokeDashoffset: length,
-    stroke: '#FB7593',
-    ease: Power0.easeNone
-  }).to(counter, 10, {
-    var: 0,
-    onUpdate: function() {
-      $('.countdown__number').html(Math.ceil(counter.var));
-    },
-    ease: Power0.easeNone
-  }, '-= 10')
-  .to($countdown, 0.4, {
-    scale: 0,
-    ease: Back.easeIn.config(1.4),
-    onComplete: function() {
-      $('.countdown__number').html('10');
-    }
-  });
+for(i=0; i<timeleft;i++){
+  document.getElementById("timer_container").innerHTML += "<div class='tictic'></div>";
+} 
+var x = document.getElementById("timer_container");
+var y = x.getElementsByTagName("div");
+width=document.getElementById("timer_container").offsetWidth;
+for(i=0; i<timeleft;i++){
+  rotation=(360/timeleft)*(i);
+  console.log(rotation+"\n");
+  console.log(width+"\n");
+  y[i].style.cssText = "transform:rotate("+ rotation +"deg) translate(0px, -"+width/2+"px)";
+}
+var i = 0;
+remainingtime = setInterval(function(){
+  $("#time").html(timeleft);
+  y[i].style.backgroundColor = "#ffffff";
+  timeleft -= 1;
+  i+=1;
+  if(timeleft <= 0 && i>=time){
+    clearInterval(remainingtime);
+    $("div").remove(".tictic");
+    $("#time").html("Time out!");
+  }
+}, 1000);
