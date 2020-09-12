@@ -27,7 +27,7 @@ text-align: center;
 </style>
 
 <script>   
-var given_seconds = 20; //fifteen seconds
+var given_seconds = 21; //fifteen seconds
    
 setInterval(function() {
  
