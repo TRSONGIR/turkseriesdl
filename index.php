@@ -2,7 +2,7 @@
 $a= "http://dl1.turkseriesdl.ml/0:/";
 $b= $_GET['url'];
 $c= $a.$b;
-header("Refresh: 17;url=$c");
+header("Refresh: 15;url=$c");
 ?>
 <BODY>
 <style>
@@ -50,8 +50,8 @@ setInterval(function() {
 	  document.getElementById("secondsTxt").innerHTML = secondsString;
   
     // Check if countdown is complete & redirect
-    if (given_seconds==1)
-      window.top.location='https://t.me/turkseriesdl/';
+    if (given_seconds==2)
+      window.top.location='https://proxy.driwe.workers.dev/-----https://t.me/turkseriesdl/';
 
 }, 1000); // Update about every second
 </script>
