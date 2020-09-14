@@ -1,0 +1,17 @@
+need_upgrade_schema3to4
+========================
+upgrade script 4 at Thu, 02 Jul 2015 16:58:39 +0200
+table change tables  CHARACTER SET begins
+============================
+ALTER TABLE ads
+===============================
+ALTER TABLE config
+========================================
+ALTER TABLE links
+======================
+ALTER TABLE `options`
+=======================
+ALTER TABLE social
+=======================
+ALTER TABLE users
+successful upgrade was successfully reported to the user

@@ -1,0 +1,92 @@
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12"> 
+                        <h1 class="page-header">
+                            Add a link
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                            <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
+                            </li>
+                            <li class="active">
+                            <i class="fa fa-fw fa-signal"></i> Add a link
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        {if $done eq 0}
+                         <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                       Use this form to  add a new link
+                                    </div>
+                                    {if $is_demo eq 1}
+                                    <p class="bg-danger">In demo the form  is disabled </p>
+                                    {/if}                                    
+                                    <div class="panel-body">
+                                        <form role="form" action="addlink.php" name="formurl" method="post" onSubmit="return check_it();">
+                                            <input type="hidden" name="form_action" value="1">
+                                            <div class="form-group">
+                                                <label class="text-primary">Name</label>
+                                                <input class="form-control" name="name" placeholder="Enter url name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-primary">URL</label>
+                                                <input class="form-control" name="url" placeholder="Enter url" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-primary">Size</label>
+                                                <input class="form-control" name="size" placeholder="Enter size">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-primary">Owner</label>
+                                                <input class="form-control" name="author" placeholder="Enter author">
+                                            </div>
+
+                                            <button type="submit" class="btn btn-success" name="action">add the link</button>
+                                            <button type="reset" class="btn btn-warning">Reset fields</button>
+
+                                        </form>
+                                    </div>
+                                    <div class="panel-footer">
+                                        Add link
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {elseif $done eq 1}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h1>successfully added link</h1>
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">copy and use them wherever you want</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <label class="text-primary">this is the link</label>
+                                        <input class="form-control" name="size" placeholder="Enter size" value="{$siteurl}/{$rand}" onclick="this.select()">
+                                        <br>
+                                    </div>
+                                    <p class="padding_left_15"><a href="{$siteurl}/{$rand}" class="btn btn-primary">test the link</a> <strong>or</strong> 
+                                    <a href="addlink.php" class="btn btn-success">add another link</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    {/if}
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+
+
+   

@@ -1,0 +1,78 @@
+       <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.php">Admin Panel</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li>
+                    <a href="../index.php" target="_blank"><i class="fa fa-fw fa-home"></i>Visit Site</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> {$name} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="profile.php"><i class="fa fa-fw fa-user"></i>Edit My Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="logout.php"><i class="fa fa-fw fa-power-off"></i>Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#links"><i class="fa fa-fw fa-signal"></i> Manage links <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="links" class="collapse">
+                            <li>
+                                <a href="addlink.php">add a link</a>
+                            </li>
+                            <li>
+                                <a href="multilink.php">add multi links</a>
+                            </li>                        
+                            <li>
+                                <a href="viewlinks.php">manage links</a>
+                            </li>
+                            <li>
+                                <a href="search.php">search</a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+		    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#admin"><i class="glyphicon glyphicon-user"></i> Manage admins <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="admin" class="collapse">
+                            <li>
+                                <a href="addadmin.php">add admin</a>
+                            </li>
+                            <li>
+                                <a href="viewadmins.php">manage admins</a>
+			    </li>                        
+                        </ul>
+                    </li>
+		    <li>
+                        <a href="config.php"><i class="fa fa-fw fa-key"></i> Site Settings </a>
+                    </li>
+                    <li>
+                        <a href="viewads.php"><i class="fa fa-fw fa-usd"></i> Manage ads</a>
+                    </li>
+                    <li>
+                        <a href="social.php"><i class="fa fa-fw fa-facebook"></i> Social Settings</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>

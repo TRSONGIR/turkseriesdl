@@ -1,0 +1,86 @@
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                         Edit profile info
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> Edit profile
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        {if $done eq 0}
+                        <div class="row">
+                    <div class="col-lg-6">
+                        <div class="panel panel-success">
+                            {if $is_demo eq 1}
+                                <p class="bg-danger">In demo edit button is disabled </p>
+                            {/if}
+                            <div class="panel-heading">
+                               Use this form to  edit your profile
+                            </div>
+                            <div class="panel-body">
+                            
+                            <form role="form" action="profile.php" method="post">
+                                <input type="hidden" name="form_action" value="1">
+                                <div class="form-group">
+                                    <label class="text-primary">your name</label>
+                                    <input class="form-control" name="name" value="{$name}">
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-primary">email</label>
+                                    <input class="form-control" name="email" value="{$email}" >
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-primary">username</label>
+                                    <input class="form-control" name="username" value="{$username}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-primary">password</label>
+                                    <input class="form-control"  type="password" name="password" value="">
+                                </div>
+
+                               <button type="submit" class="btn btn-success" name="action">edit profile</button>
+                               <button type="reset" class="btn btn-warning">Reset fields</button>
+
+                            </form>
+                            
+                            </div>
+                            <div class="panel-footer">
+                                Edit profile
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {elseif $done eq 1}
+                <div class="alert alert-success">
+                    <strong> successfully edited</strong> you will be redirected now 
+                </div>
+                {literal}
+                <script>
+                    window.setTimeout(function () {
+                       location.href = "profile.php";
+                   }, 2000)
+                </script>
+                {/literal}
+                {/if}
+                </div>
+            </div>
+                <!-- /.row -->
+        </div>
+            <!-- /.container-fluid -->
+    </div>
+        <!-- /#page-wrapper -->
+
+
+   

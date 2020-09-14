@@ -1,0 +1,29 @@
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    {if isset($err_msg)}
+                        {$err_msg}
+                        <br>
+                        <strong> <a href="index.php" style="color: #FFF;">try again</a></strong>
+                    {else}
+                        <h6>Your link was added to our database. <strong style="font-size: 30px">&#9786;</strong></h6>
+                        <p>Use the following link on your blog, forums ... etc</p>
+                        <h4>Link: <input size="50" name="link" class="input" value="{$siteurl}/{$rand}" onclick="this.select()"></h4>
+                        <p>
+                            <a href="{$siteurl}/{$rand}" class="btn btn-lg btn-outline" style="">
+                            <i class="fa fa-download"></i> Test your link
+                            </a>
+                            <a href="{$siteurl}" class="btn btn-lg btn-outline" style="">
+                            <i class="fa fa-download"></i> Protect another
+                            </a>
+                        </p>
+                    {/if}
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    

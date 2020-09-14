@@ -1,62 +1,22 @@
 <?php
-$a= "http://dl1.turkseriesdl.ml/0:/";
-$b= $_GET['url'];
-$c= $a.$b;
-header("Refresh: 15;url=$c");
-?>
-<BODY>
-<style>
-#minutes, #seconds{
-display: inline-block;
-background-color: #FF1493;
-border-radius: 10px;
-color: white;
-width: auto;
-  min-width:70px;
-margin-left: 10px;
-padding: 14px;
-}
-.holder
-{
-width: 100%;
-margin: auto;
-text-align: center; 
-}
-  #minutesTxt, #secondsTxt{
-  font-size: 27px;}
-</style>
-
-<script>   
-var given_seconds = 21; //fifteen seconds
-   
-setInterval(function() {
- 
-    // Count down by one second
-    given_seconds=given_seconds-1;
-     
-    // Calculate hour/mins/sec's based on given seconds
-    hours = Math.floor(given_seconds / 3600);
-    minutes = Math.floor((given_seconds - (hours * 3600)) / 60);
-    seconds = given_seconds - (hours * 3600) - (minutes * 60);
-    
-      // Format the time with two digits per hour/mins/sec's
-   
-    minutesString = minutes.toString().padStart(2, '0') + '';
-    secondsString = seconds.toString().padStart(2, '0') + '';
-  
-  
-    // Print the current time so far
-    document.getElementById("minutesTxt").innerHTML = minutesString;
-	  document.getElementById("secondsTxt").innerHTML = secondsString;
-  
-    // Check if countdown is complete & redirect
-    if (given_seconds==2)
-      window.top.location='https://proxy.driwe.workers.dev/-----https://t.me/turkseriesdl/';
-
-}, 1000); // Update about every second
-</script>
-<div class="holder">
-  <div id="minutes" style="display:none"><span id="minutesTxt"></span><br>Minutes</div><div id="seconds"><span id="secondsTxt"></span><br>Seconds</div>  
-<br><br>
-</div>
-</BODY>
+// started at 8/11/2014
+require 'includes/config.php';
+require 'smarty.php';
+$time     = time();  // time now
+$ip       = $_SERVER['REMOTE_ADDR'];  // vistor ip
+$limitsec = $time-300; // 5 minutes to calculate who's online
+// update online table
+$query = ("DELETE from  online where ip='$ip' OR  time<'$limitsec'"); 
+$db->rawQuery($query);
+// end online table
+// insert to online table
+$query="INSERT INTO online (ip,time) VALUES ('$ip','$limitsec')";
+$db->rawQuery($query);
+// end insert online 
+// update visits table
+$table = 'config';                              //this table name
+$data_array['vistis'] = $db->inc(1);
+$db->update($table, $data_array);
+// end update
+$templatefile = 'index';
+require 'display.php';

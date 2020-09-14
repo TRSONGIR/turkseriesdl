@@ -1,0 +1,175 @@
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Manage Ads
+                            <small>set options</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.php">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> Manage Ads
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                    <div class="col-lg-12">
+                         {if $action eq "delads"}
+
+                        <table width="777" cellpadding="0" cellspacing="0"><tr><td width="777" height="25">
+                            <table width="777" cellpadding="0" cellspacing="0"><tr><td width="25"><img src="./templates/default/images/container2_right.gif"></td><td background="./templates/default/images/container2_slice.gif" style="padding-right:10px;color:white;">remove group of links</td><td width="25"><img src="./templates/default/images/container2_left.gif"></td></tr></table></td></tr><tr><td width="777">
+                            <table width="777" cellpadding="0" cellspacing="0"><tr><td width="1" bgcolor="#d8d8d8"><img src="./templates/default/images/spacer.gif" width=1 height=1></td>
+                                <td width="775" style="padding:20px;" valign="top"><h1>removing process successfully completed</h1>
+                            </table>
+                        </table>
+                        <table>
+                            <tr>
+                                <td align="center">removing process successfully completed you will be redirected soon ...
+                                </td>
+                                {literal}
+                                <script>
+                                   window.setTimeout(function () {
+                                      location.href = "viewads.php";
+                                   }, 2000)
+                                </script>
+                                {/literal}
+                            </tr>
+                        </table>
+                        {elseif $action eq "updateads"}
+                        {if $done eq 0}
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                       Use this form to  manage the ad
+                                    </div>
+                                    {if $is_demo eq 1}
+                                    <p class="bg-danger">In demo the form  is disabled </p>
+                                    {/if}
+                                    <div class="panel-body">
+                                    <form role="form" action="viewads.php?do=update&id={$adsid}&form=1" method="post">
+                                        <input type="hidden" name="form_action" value="1">
+                                        <div class="form-group">
+                                            <label class="text-primary">
+                                                the name of the ad:
+                                            </label>
+                                            <input class="form-control" name="adname" value="{$adname}">
+                                        </div>
+                                        <div class="form-group padding_left_15" >
+                                            <label class="text-primary">
+                                                ad status 
+                                            </label>
+                                            <label class="radio">
+                                                <input name="active" type="radio" {if $active eq 1}checked{else}{/if} value="1" />
+                                                enable
+                                            </label>
+                                            <label class="radio">
+                                                <input name="active" type="radio" {if $active eq 2}checked{else}{/if} value="2" />
+                                                disable
+                                            </label>   
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="radio">
+                                                used template
+                                            </label>
+                                            <select size="1" name="template">
+                                                <option selected value="{$template}">
+                                                    {$template}
+                                                </option>
+                                                {section name=files loop=$templates}
+                                                    <option value="{$templates[files]}">{$templates[files]}</option>
+                                                {/section}
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-primary">Ad code</label>
+                                            <textarea  rows="5" class="form-control" name="code">{$code}</textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary" name="action">edit</button>
+                                    </form>
+                                </div>
+                            <div class="panel-footer">
+                                edit ad
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {elseif $done eq 1}
+                <div class="alert alert-success">
+                   <strong> successfully edited</strong> you will be redirected now 
+                </div>
+                {literal}
+                <script>
+                    window.setTimeout(function () {
+                       location.href = "viewads.php";
+                    }, 2000)
+                </script>
+                {/literal}
+                {/if}
+                {else}
+                
+                <form action="viewadmins.php?do=del" method="post" name="urls">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            {if $is_demo eq 1}
+                                <p class="bg-danger">In demo the form is disabled </p>
+                            {/if}
+                            <h2>Edit Ads</h2>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr class="success">
+                                            <th>publisher's name</th>
+                                            <th>preview ad</th>
+                                            <th>used templete</th>
+                                            <th>active</th>
+                                            <th>added by</th>
+                                            <th>edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {section name=id loop=$urls}
+                                        <tr>
+                                            <td>{$urls[id].name}</td>
+                                            <td><a  style="cursor:pointer;" href"#" onclick="NewWindow('showads.php?id={$urls[id].id}','name','500','500','yes');return false">click her to view</a></td>
+                                            <td>{$urls[id].template}</td>
+                                            <td>
+                                                {if $urls[id].active eq '1'}
+                                                    YES
+                                                {else}
+                                                    NO
+                                                {/if}
+                                            </td>
+                                            <td>
+                                                {$urls[id].admin}
+                                            </td>
+                                            <td>
+                                                <a href="viewads.php?do=update&id={$urls[id].id}">
+                                                <button type="button" class="btn btn-primary">edit it</button>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {/section}   
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </form>	
+                {/if}
+                </div>
+            </div>
+         <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+        <!-- /#page-wrapper -->
+
+
+   
