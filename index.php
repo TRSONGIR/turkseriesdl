@@ -149,8 +149,6 @@ counter--;
 <div class=\"seconds\"> \
   <div class=\"numbers\">" + counter + "</div>seconds</div> \
 </div>";
-if(counter === 0){ clearInterval(interval);
-}
 },1000);
   </script>
 </body>
