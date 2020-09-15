@@ -151,7 +151,7 @@ foreach($urls as $key => $value){
 	$url= "https://".$urls[$key];
 	break;
 }else{
-	$url="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl";
+	$url="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl/2";
 }
 };
 header("refresh: 20;url=$url");
