@@ -1,1 +1,0 @@
-<?php$header_file     = $smarty->fetch ('default/header.html');$side_file       = $smarty->fetch ('default/side.html');$footer_file     = $smarty->fetch ('default/footer.html');$body_file       = $smarty->fetch ('default/'.$templatefile .'.html');$template_output = $header_file . $side_file .  $body_file  . $footer_file;echo $template_output;
