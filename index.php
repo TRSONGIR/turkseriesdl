@@ -105,7 +105,7 @@ footer a:hover {
   <div id="timer"></div>
 </div>
 <footer>
-<a dir="rtl" href="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl"><button class="btn">کانال تلگرام 𝑻𝒓 𝑺𝒆𝒓𝒊𝒂𝒍𝒔</button><a>
+<a dir="rtl" href="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl"><button class="btn">کانال تلگرام Tr Serials</button><a>
 </footer>
 <!-- partial -->
 <script>
@@ -140,7 +140,7 @@ else
     return false;
 }
 };
-$file="dl.trseials.ml/0:/".$_GET['url']."[Turkseriesdl]";
+$file="dl.trserials.ml/0:/".$_GET['url']."[TRSERIALS]";
 $urls = array(
 "mkv" => "$file.mkv",
 "mp4" => "$file.mp4",
