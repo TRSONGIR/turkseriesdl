@@ -101,14 +101,28 @@ footer a:hover {
 <body>
 <!-- partial:index.partial.html -->
 <div class="container">
-  <h1>Creating Download link...</h1>
+  <h1>Creating download link...</h1>
   <div id="timer"></div>
 </div>
 <footer>
-<a href="https://t.me"><button class="btn">کانال تلگرام ما</button><a>
+<a href="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl"><button class="btn">کانال تلگرام ما</button><a>
 </footer>
 <!-- partial -->
-<?php
+<script>
+  let counter = 21;
+
+const interval = setInterval(() => {
+counter--;
+ document.getElementById("timer").innerHTML =
+    " \
+<div class=\"seconds\"> \
+  <div class=\"numbers\">" + counter + "</div>seconds</div> \
+</div>";
+	if(counter === 0){ clearInterval(interval);
+}
+},1000);
+  </script>
+  <?php
 function checkRemoteFile($url)
 {
 $ch = curl_init();
@@ -136,22 +150,11 @@ foreach($urls as $key => $value){
 	if(checkRemoteFile($urls[$key]) == true){
 	$url= "https://".$urls[$key];
 	break;
-}};
-header("refresh: 20;url=$url")
-?>
-<script>
-  let counter = 21;
-
-const interval = setInterval(() => {
-counter--;
- document.getElementById("timer").innerHTML =
-    " \
-<div class=\"seconds\"> \
-  <div class=\"numbers\">" + counter + "</div>seconds</div> \
-</div>";
-	if(counter === 0){ clearInterval(interval);
+}else{
+	$url="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl";
 }
-},1000);
-  </script>
+};
+header("refresh: 20;url=$url");
+?>
 </body>
 </html>
