@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width"> 
-  <title>Turk Series | سریال ترکی</title>
+  <title>𝑻𝒓 𝑺𝒆𝒓𝒊𝒂𝒍𝒔</title>
   <style>
   @import url("https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900");
 html {
@@ -105,7 +105,7 @@ footer a:hover {
   <div id="timer"></div>
 </div>
 <footer>
-<a href="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl"><button class="btn">کانال تلگرام ما</button><a>
+<a dir="rtl" href="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl"><button class="btn">کانال تلگرام 𝑻𝒓 𝑺𝒆𝒓𝒊𝒂𝒍𝒔</button><a>
 </footer>
 <!-- partial -->
 <script>
@@ -140,7 +140,7 @@ else
     return false;
 }
 };
-$file="dl1.turkseriesdl.ml/0:/".$_GET['url']."[Turkseriesdl]";
+$file="dl.trseials.ml/0:/".$_GET['url']."[Turkseriesdl]";
 $urls = array(
 "mkv" => "$file.mkv",
 "mp4" => "$file.mp4",
