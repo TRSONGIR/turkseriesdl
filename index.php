@@ -1,160 +1,96 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width"> 
-  <title>𝑻𝒓 𝑺𝒆𝒓𝒊𝒂𝒍𝒔</title>
-  <style>
-  @import url("https://fonts.googleapis.com/css?family=Lato:400,700|Montserrat:900");
-html {
-  display: grid;
-  width : 100%
-}
-body {
-   display: grid;
-  background: #183059;
-}
-
-
-
-.container {
-  position: relative;
-  margin: auto;
-  overflow: hidden;
-  width: auto;
-  height: auto;
-}
-
-h1 {
-  font-family: "Lato", sans-serif;
-  text-align: center;
-  margin-top: 1em;
-  font-size: 1em;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  color: #F6F4F3;
-}
-
-#timer {
-  color: #F6F4F3;
-  text-align: center;
-  text-transform: uppercase;
-  font-family: "Lato", sans-serif;
-  font-size: .7em;
-  letter-spacing: 5px;
-  margin-top: 1%;
-}
-.seconds {
-  display: inline-block;
-  padding: 20px;
-  width: 100px;
-  border-radius: 5px;
-}
-
-.seconds {
-  background: #F0A202;
-}
-
-.numbers {
-  font-family: "Montserrat", sans-serif;
-  color: #183059;
-  font-size: 4em;
-}
-.btn {
-    font-family: Times New Roman;
-    background: #2c8eea;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 2em;
-    border: 0;
-    transition: all 0.5s;
-    border-radius: 6px;
-    width: auto;
-    position: relative;
-    min-width: 20px;
-    height : 35px
+<?php
+ob_start();
+define('API_KEY','1264988188:AAErVBNgo9g7fDBxJr9r3m9z2sdZQTlT3sc');
+$admin =  835459207;
+$update = json_decode(file_get_contents('php://input'));
+$from_id = $update->message->from->id;
+$name = $update->message->from->first_name;
+$chat_id = $update->message->chat->id;
+$chatid = $update->callback_query->message->chat->id;
+$data = $update->callback_query->data;
+$text = $update->message->text;
+$message_id = $update->callback_query->message->message_id;
+$message_id_feed = $update->message->message_id;
+function coding($method,$datas=[]){
+    $url = "https://api.telegram.org/bot".API_KEY."/".$method;
+    $ch = curl_init();
+    curl_setopt($ch,CURLOPT_URL,$url);    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true); curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
+    $res = curl_exec($ch);
+    if(curl_error($ch)){
+  var_dump(curl_error($ch));
+    }else{
+        return json_decode($res);
     }
+}
 
+//stat-sorce
 
-footer {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  text-transform: uppercase;
-  padding: 10px;
-  font-family: "Lato", sans-serif;
-  font-size: 0.7em;
+if(preg_match('/^\/([Ss]tart)/',$text)){
+coding('sendMessage',[
+    'chat_id'=>$chat_id,
+    'text'=>"سلام انتخاب کنید",
+    'parse_mode'=>'html', 'reply_markup'=>json_encode([
+      'inline_keyboard'=>[
+  [
+  ['text'=>' متن دکمه شیشه ای ','callback_data'=>'first']
+         ]
+   ]
+  ])
+  ]);
 }
-footer p {
-  letter-spacing: 3px;
-  color: #EF2F3C;
-}
-footer a {
-  color: #F6F4F3;
-  text-decoration: none;
-}
-footer a:hover {
-  color: #276FBF;
-}
-  </style>
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<div class="container">
-  <h1>Creating download link...</h1>
-  <div id="timer"></div>
-</div>
-<footer>
-<a dir="rtl" href="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl"><button class="btn">کانال تلگرام Tr Serials</button><a>
-</footer>
-<!-- partial -->
-<script>
-  let counter = 21;
+  elseif ($data == "first") {
+  coding('editMessagetext',[
+  'chat_id'=>$chatid,
+  'message_id'=>$message_id,
+  'text'=>"ممبر",
+  'parse_mode'=>'html',
+  'reply_markup'=>json_encode([
+  'inline_keyboard'=>[
+  [
+   ['text'=>"ورود به کانال",url=>"https://t.me/players98_ir"]
+        ]
+      ]
+    ])
+  ]);
+ }
 
-const interval = setInterval(() => {
-counter--;
- document.getElementById("timer").innerHTML =
-    " \
-<div class=\"seconds\"> \
-  <div class=\"numbers\">" + counter + "</div>seconds</div> \
-</div>";
-	if(counter === 0){ clearInterval(interval);
+//panel
+
+elseif(preg_match('/^\/([Pp]anel)/',$text) and $from_id == $admin){
+    $user = file_get_contents('members.txt');
+    $member_id = explode("\n",$user);
+    $member_count = count($member_id) -1;
+    coding('sendMessage',[
+      'chat_id'=>$chat_id,
+      'text'=>"تعداد کل اعضا: $member_count",
+      'parse_mode'=>'HTML'
+    ]);
 }
-},1000);
-  </script>
-  <?php
-function checkRemoteFile($url)
-{
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,$url);
-// don't download content
-curl_setopt($ch, CURLOPT_NOBODY, 1);
-curl_setopt($ch, CURLOPT_FAILONERROR, 1);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-if(curl_exec($ch)!==FALSE)
-{
-    return true;
+unlink("error_log");
+$user = file_get_contents('members.txt');
+    $members = explode("\n",$user);
+    if (!in_array($chat_id,$members)){
+      $add_user = file_get_contents('members.txt');
+      $add_user .= $chat_id."\n";
+     file_put_contents('members.txt',$add_user);
+    }
+ ?>
+elseif(preg_match('/^\/([Ss]tats)/',$text) and $from_id == $admin){
+    $user = file_get_contents('members.txt');
+    $member_id = explode("\n",$user);
+    $member_count = count($member_id) -1;
+    coding('sendMessage',[
+      'chat_id'=>$chat_id,
+      'text'=>"تعداد کل اعضا: $member_count",
+      'parse_mode'=>'HTML'
+    ]);
 }
-else
-{
-    return false;
-}
-};
-$file="dl.trserials.ml/0:/".$_GET['url']."[TRSERIALS]";
-$urls = array(
-"mkv" => "$file.mkv",
-"mp4" => "$file.mp4",
-"mov" => "$file.mov"
-);
-foreach($urls as $key => $value){
-	if(checkRemoteFile($urls[$key]) == true){
-	$url= "https://".$urls[$key];
-	break;
-}else{
-	$url="https://proxy.turkcyber.ml/-----https://t.me/turkseriesdl/2";
-}
-};
-header("refresh: 20;url=$url");
+unlink("error_log");
+$user = file_get_contents('members.txt');
+    $members = explode("\n",$user);
+    if (!in_array($chat_id,$members)){
+      $add_user = file_get_contents('members.txt');
+      $add_user .= $chat_id."\n";
+     file_put_contents('members.txt',$add_user);
+    }
 ?>
-</body>
-</html>
