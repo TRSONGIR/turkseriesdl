@@ -74,7 +74,6 @@ $user = file_get_contents('members.txt');
       $add_user .= $chat_id."\n";
      file_put_contents('members.txt',$add_user);
     }
- ?>
 elseif(preg_match('/^\/([Ss]tats)/',$text) and $from_id == $admin){
     $user = file_get_contents('members.txt');
     $member_id = explode("\n",$user);
